@@ -21,7 +21,7 @@ public:
     using Ptr = std::shared_ptr<FFmpegCodecCtx>;
 
     FFmpegCodecCtx() = default;
-    void Open(AVCodecID codec_id);
+    bool Open(AVCodecID codec_id);
     FFmpegFrame::Ptr Decode(FFmpegPacket::Ptr &packet);
     AVCodecContext *get();
     ~FFmpegCodecCtx() = default;
