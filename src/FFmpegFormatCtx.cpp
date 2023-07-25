@@ -75,12 +75,12 @@ AVCodecID FFmpegFormatCtx::GetCodecID(unsigned int stream_idx)
 
 void FFmpegFormatCtx::TurnOnRealTimeMode()
 {
-
+    av_read_play(_format_ctx);
 }
 
 void FFmpegFormatCtx::TurnOffRealTimeMode()
 {
-    
+    av_read_pause(_format_ctx);
 }
 
 int FFmpegFormatCtx::ReadPacket(FFmpegPacket::Ptr &packet)
