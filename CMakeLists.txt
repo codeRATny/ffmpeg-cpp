@@ -21,6 +21,7 @@ pkg_check_modules(LIBAV REQUIRED IMPORTED_TARGET
     libavformat
     libavcodec
     libavutil
+    libswscale
 )
 
 target_link_libraries(ffmpeg-cpp PkgConfig::LIBAV)

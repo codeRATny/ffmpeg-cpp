@@ -9,6 +9,7 @@ extern "C"
 #include <libavcodec/avcodec.h>
 #include <libavcodec/codec.h>
 #include <libavutil/avutil.h>
+#include <libavutil/imgutils.h>
 #include <libavutil/log.h>
 }
 
@@ -18,10 +19,13 @@ public:
     using Ptr = std::shared_ptr<FFmpegFrame>;
 
     FFmpegFrame(std::shared_ptr<AVFrame> frame = nullptr);
-    ~FFmpegFrame();
+    
+    void fillPicture(AVPixelFormat target_format, int target_width, int target_height);
 
     AVFrame *get();
+
 private:
+    std::unique_ptr<char>    _data;
     std::shared_ptr<AVFrame> _frame;
 };
 
