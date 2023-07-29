@@ -1,6 +1,5 @@
 #include <iostream>
-#include "FFmpegFormatCtx.hpp"
-#include "FFmpegCodecCtx.hpp"
+#include "ffmpeg-cpp.hpp"
 #include "Utils.hpp"
 
 #define NUMBER_OF_FRAME 100

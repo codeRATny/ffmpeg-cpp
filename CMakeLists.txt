@@ -9,10 +9,8 @@ file(GLOB SRC_LIST
 
 set(CMAKE_CXX_STANDARD 20)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 
 add_library(ffmpeg-cpp STATIC ${SRC_LIST})
-add_executable(decode_video ${CMAKE_CURRENT_SOURCE_DIR}/examples/decode_video.cpp)
 
 include(FindPkgConfig)
 
@@ -22,6 +20,7 @@ pkg_check_modules(LIBAV REQUIRED IMPORTED_TARGET
     libavcodec
     libavutil
     libswscale
+    libswresample
 )
 
 target_link_libraries(ffmpeg-cpp PkgConfig::LIBAV)
@@ -30,4 +29,5 @@ target_include_directories(ffmpeg-cpp
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>"
   PUBLIC
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>")
-target_link_libraries(decode_video ffmpeg-cpp)
+
+add_subdirectory(${PROJECT_SOURCE_DIR}/examples)
