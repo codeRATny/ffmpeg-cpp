@@ -25,7 +25,7 @@ public:
     AVFrame *get();
 
 private:
-    std::unique_ptr<char>    _data;
+    std::unique_ptr<char[]>  _data;
     std::shared_ptr<AVFrame> _frame;
 };
 
